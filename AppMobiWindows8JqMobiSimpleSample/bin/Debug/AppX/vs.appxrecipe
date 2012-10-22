@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>RYAN-WIN8</Machine>
+    <WindowsUser>Ryan</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>23D8BC9B7AD5D8031FF6646A79067A45E0C0B842B2BE6D8123D18A9A0F37A7C1</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>f63196ea-74bb-4c38-8dab-3c896fb4ac26_1.0.0.0_neutral__3y0bchp7kwvet</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>f63196ea-74bb-4c38-8dab-3c896fb4ac26_3y0bchp7kwvet!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>f63196ea-74bb-4c38-8dab-3c896fb4ac26</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Ryan</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-10-22T14:26:03.753</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppMobiWindows8JqMobiSimpleSample.exe">
+      <PackagePath>AppMobiWindows8JqMobiSimpleSample.exe</PackagePath>
+      <Modified>2012-10-22T14:26:03.469</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppMobiWindows8JqMobiSimpleSample.pdb">
+      <PackagePath>AppMobiWindows8JqMobiSimpleSample.pdb</PackagePath>
+      <Modified>2012-10-22T14:26:03.424</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T03:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\icons.css">
+      <PackagePath>html\css\icons.css</PackagePath>
+      <Modified>2012-10-22T11:20:11.831</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui.css">
+      <PackagePath>html\css\jq.ui.css</PackagePath>
+      <Modified>2012-10-22T12:19:22.069</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\index.html">
+      <PackagePath>html\index.html</PackagePath>
+      <Modified>2012-10-22T14:25:49.467</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.ui.js">
+      <PackagePath>html\_appMobi\jq.ui.js</PackagePath>
+      <Modified>2012-10-22T11:20:11.853</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\appmobi.js">
+      <PackagePath>html\_appMobi\appmobi.js</PackagePath>
+      <Modified>2012-10-16T17:49:48.961</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\appmobi_local_bootstrap.js">
+      <PackagePath>html\_appMobi\appmobi_local_bootstrap.js</PackagePath>
+      <Modified>2012-10-22T14:05:27.575</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.js">
+      <PackagePath>html\_appMobi\jq.mobi.js</PackagePath>
+      <Modified>2012-09-26T12:49:14.561</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.min.js">
+      <PackagePath>html\_appMobi\jq.mobi.min.js</PackagePath>
+      <Modified>2012-09-26T12:49:14.564</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2012-10-22T11:19:45.110</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppMobiPage.xaml">
+      <PackagePath>AppMobiPage.xaml</PackagePath>
+      <Modified>2012-10-22T11:21:21.436</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-26T23:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2012-10-22T11:19:45.130</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2012-10-22T14:26:03.619</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

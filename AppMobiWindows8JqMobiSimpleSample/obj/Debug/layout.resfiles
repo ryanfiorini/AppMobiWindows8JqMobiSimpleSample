@@ -1,0 +1,16 @@
+Assets\Logo.png
+Assets\SmallLogo.png
+Assets\SplashScreen.png
+Assets\StoreLogo.png
+App.xaml
+AppMobiPage.xaml
+Common\StandardStyles.xaml
+MainPage.xaml
+html\_appMobi\appmobi.js
+html\_appMobi\appmobi_local_bootstrap.js
+html\_appMobi\jq.mobi.js
+html\_appMobi\jq.mobi.min.js
+html\_appMobi\jq.ui.js
+html\css\icons.css
+html\css\jq.ui.css
+html\index.html
