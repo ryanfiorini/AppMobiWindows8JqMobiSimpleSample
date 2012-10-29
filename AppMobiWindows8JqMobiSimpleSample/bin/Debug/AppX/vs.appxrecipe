@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2012-10-22T14:26:03.753</Modified>
+      <Modified>2012-10-29T18:48:52.374</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppMobiWindows8JqMobiSimpleSample.exe">
       <PackagePath>AppMobiWindows8JqMobiSimpleSample.exe</PackagePath>
-      <Modified>2012-10-22T14:26:03.469</Modified>
+      <Modified>2012-10-29T18:48:52.131</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\AppMobiWindows8JqMobiSimpleSample.pdb">
       <PackagePath>AppMobiWindows8JqMobiSimpleSample.pdb</PackagePath>
-      <Modified>2012-10-22T14:26:03.424</Modified>
+      <Modified>2012-10-29T18:48:52.081</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -50,35 +50,63 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\icons.css">
       <PackagePath>html\css\icons.css</PackagePath>
-      <Modified>2012-10-22T11:20:11.831</Modified>
+      <Modified>2012-10-29T17:46:25.390</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\icons_new.css">
+      <PackagePath>html\css\icons_new.css</PackagePath>
+      <Modified>2012-10-29T17:49:26.693</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui.css">
       <PackagePath>html\css\jq.ui.css</PackagePath>
-      <Modified>2012-10-22T12:19:22.069</Modified>
+      <Modified>2012-10-29T17:46:25.448</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui_new.css">
+      <PackagePath>html\css\jq.ui_new.css</PackagePath>
+      <Modified>2012-10-29T17:49:38.316</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\index.html">
       <PackagePath>html\index.html</PackagePath>
-      <Modified>2012-10-22T14:25:49.467</Modified>
+      <Modified>2012-10-29T18:36:41.574</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.desktopBrowsers.js">
+      <PackagePath>html\_appMobi\jq.desktopBrowsers.js</PackagePath>
+      <Modified>2012-10-29T18:29:05.464</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.ui.js">
       <PackagePath>html\_appMobi\jq.ui.js</PackagePath>
-      <Modified>2012-10-22T11:20:11.853</Modified>
+      <Modified>2012-10-29T18:48:11.770</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\appmobi.js">
       <PackagePath>html\_appMobi\appmobi.js</PackagePath>
-      <Modified>2012-10-16T17:49:48.961</Modified>
+      <Modified>2012-10-29T17:47:38.640</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\appmobi_local_bootstrap.js">
       <PackagePath>html\_appMobi\appmobi_local_bootstrap.js</PackagePath>
-      <Modified>2012-10-22T14:05:27.575</Modified>
+      <Modified>2012-10-29T17:47:16.112</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.js">
       <PackagePath>html\_appMobi\jq.mobi.js</PackagePath>
-      <Modified>2012-09-26T12:49:14.561</Modified>
+      <Modified>2012-10-29T17:50:05.301</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.min.js">
       <PackagePath>html\_appMobi\jq.mobi.min.js</PackagePath>
-      <Modified>2012-09-26T12:49:14.564</Modified>
+      <Modified>2012-10-29T17:49:55.383</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.ui.min.js">
+      <PackagePath>html\_appMobi\jq.ui.min.js</PackagePath>
+      <Modified>2012-10-29T18:48:21.061</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.mobi.js">
+      <PackagePath>html\_appMobi\_jq.mobi.js</PackagePath>
+      <Modified>2012-10-29T17:46:25.189</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.mobi.min.js">
+      <PackagePath>html\_appMobi\_jq.mobi.min.js</PackagePath>
+      <Modified>2012-10-29T17:46:25.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.ui.js">
+      <PackagePath>html\_appMobi\_jq.ui.js</PackagePath>
+      <Modified>2012-10-29T17:46:25.330</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\App.xaml">
       <PackagePath>App.xaml</PackagePath>
@@ -98,7 +126,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2012-10-22T14:26:03.619</Modified>
+      <Modified>2012-10-29T18:36:33.067</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

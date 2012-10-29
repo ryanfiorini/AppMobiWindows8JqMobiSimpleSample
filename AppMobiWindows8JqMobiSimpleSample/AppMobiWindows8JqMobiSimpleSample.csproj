@@ -126,13 +126,20 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="html\css\icons.css" />
+    <Content Include="html\css\icons_new.css" />
     <Content Include="html\css\jq.ui.css" />
+    <Content Include="html\css\jq.ui_new.css" />
     <Content Include="html\index.html" />
+    <Content Include="html\_appMobi\jq.desktopBrowsers.js" />
     <Content Include="html\_appMobi\jq.ui.js" />
     <Content Include="html\_appMobi\appmobi.js" />
     <Content Include="html\_appMobi\appmobi_local_bootstrap.js" />
     <Content Include="html\_appMobi\jq.mobi.js" />
     <Content Include="html\_appMobi\jq.mobi.min.js" />
+    <Content Include="html\_appMobi\jq.ui.min.js" />
+    <Content Include="html\_appMobi\_jq.mobi.js" />
+    <Content Include="html\_appMobi\_jq.mobi.min.js" />
+    <Content Include="html\_appMobi\_jq.ui.js" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
