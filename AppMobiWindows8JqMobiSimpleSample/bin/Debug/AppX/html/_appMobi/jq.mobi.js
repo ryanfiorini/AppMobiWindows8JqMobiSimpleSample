@@ -173,7 +173,7 @@ if (!window.jq || typeof (jq) !== "function") {
         function _selector(selector, what) {
             
 
-			//selector=selector.trim();
+			selector=selector.trim();
             if (selector[0] === "#" && selector.indexOf(" ") === -1 && selector.indexOf(">") === -1) {
                 if (what == document)
                     _shimNodes(what.getElementById(selector.replace("#", "")),this);
@@ -413,7 +413,8 @@ if (!window.jq || typeof (jq) !== "function") {
             ready: function(callback) {
                 if (document.readyState === "complete" || document.readyState === "loaded"||(!$.os.ie&&document.readyState==="interactive")) //IE10 fires interactive too early
                     callback();
-                document.addEventListener("DOMContentLoaded", callback, false);
+                else
+                    document.addEventListener("DOMContentLoaded", callback, false);
                 return this;
             },
             /**
@@ -527,6 +528,22 @@ if (!window.jq || typeof (jq) !== "function") {
                 return this;
             },
             /**
+             * Gets or sets css vendor specific css properties
+            * If used as a get, the first elements css property is returned
+                ```
+                $().css("background"); // Gets the first elements background
+                $().css("background","red")  //Sets the elements background to red
+                ```
+
+            * @param {String} attribute to get
+            * @param {String} value to set as
+            * @return {Object} a jqMobi object
+            * @title $().css(attribute,[value])
+            */
+            vendorCss:function(attribute,value,obj){
+                return this.css($.feat.cssPrefix+attribute,value,obj);
+            },
+            /**
             * Sets the innerHTML of all elements to an empty string
                 ```
                 $().empty();
@@ -622,7 +639,7 @@ if (!window.jq || typeof (jq) !== "function") {
             */
             val: function(value) {
                 if (this.length === 0)
-                    return undefined;
+                    return (value === undefined) ? undefined : this;
                 if (value == undefined)
                     return this[0].value;
                 for (var i = 0; i < this.length; i++) {
@@ -646,7 +663,7 @@ if (!window.jq || typeof (jq) !== "function") {
             */
             attr: function(attr, value) {
                 if (this.length === 0)
-                    return undefined;                
+                    return (value === undefined) ? undefined : this;            
                 if (value === undefined && !$.isObject(attr)) {
                     var val = (this[0].jqmCacheId&&_attrCache[this[0].jqmCacheId][attr])?(this[0].jqmCacheId&&_attrCache[this[0].jqmCacheId][attr]):this[0].getAttribute(attr);
                     return val;
@@ -717,7 +734,7 @@ if (!window.jq || typeof (jq) !== "function") {
             */
             prop: function(prop, value) {
                 if (this.length === 0)
-                    return undefined;                
+                    return (value === undefined) ? undefined : this;          
                 if (value === undefined && !$.isObject(prop)) {
                     var res;
                     var val = (this[0].jqmCacheId&&_propCache[this[0].jqmCacheId][prop])?(this[0].jqmCacheId&&_propCache[this[0].jqmCacheId][prop]):!(res=this[0][prop])&&prop in this[0]?this[0][prop]:res;
@@ -940,6 +957,33 @@ if (!window.jq || typeof (jq) !== "function") {
                     }
                 }
                 return this;
+            },
+             /**
+            * Appends the current collection to the selector
+                ```
+                $().appendTo("#foo"); //Append an object;
+                ```
+
+            * @param {String|Object} Selector to append to
+            * @param {Boolean} [insert] insert or append
+            * @title $().appendTo(element,[insert])
+            */
+            appendTo:function(selector,insert){
+                var tmp=$(selector);
+                tmp.append(this);
+            },
+             /**
+            * Prepends the current collection to the selector
+                ```
+                $().prependTo("#foo"); //Prepend an object;
+                ```
+
+            * @param {String|Object} Selector to prepent to
+            * @title $().prependTo(element)
+            */
+            prependTo:function(selector){
+                var tmp=$(selector);
+                tmp.append(this,true);
             },
             /**
             * Prepends to the elements
@@ -1290,7 +1334,46 @@ if (!window.jq || typeof (jq) !== "function") {
                     });
                 }
                 return $.param(params,grouping);
+            },
+
+            /* added in 1.2 */
+            /**
+             * Reduce the set of elements based off index
+                ```
+               $().eq(index)
+               ```
+             * @param {Int} index - Index to filter by. If negative, it will go back from the end
+             * @return {Object} jqMobi object
+             * @title $().eq(index)
+             */
+            eq:function(ind){
+                return $(this.get(ind));
+            },
+            /**
+             * Returns the index of the selected element in the collection
+               ```
+               $().index(elem)
+               ```
+             * @param {String|Object} element to look for.  Can be a selector or object
+             * @return integer - index of selected element
+             * @title $().index(elem)
+             */
+            index:function(elem){
+                return elem?this.indexOf($(elem)[0]):this.parent().children().indexOf(this[0]);
+            },
+            /**
+              * Returns boolean if the object is a type of the selector
+              ```
+              $().is(selector)
+              ```
+             * param {String|Object|Function} selector to act upon
+             * @return boolean
+             * @title $().is(selector)
+             */
+            is:function(selector){
+                return !!selector&&this.filter(selector).length>0;
             }
+
         };
 
 
@@ -1306,7 +1389,7 @@ if (!window.jq || typeof (jq) !== "function") {
             complete: empty,
             context: undefined,
             timeout: 0,
-            crossDomain:false
+            crossDomain: null
         };
         /**
         * Execute a jsonP call, allowing cross domain scripting
@@ -1384,7 +1467,7 @@ if (!window.jq || typeof (jq) !== "function") {
 				
                 var settings = opts || {};
                 for (var key in ajaxSettings) {
-                    if (!settings[key])
+                    if (typeof(settings[key]) == 'undefined')
                         settings[key] = ajaxSettings[key];
                 }
                 
@@ -1437,8 +1520,7 @@ if (!window.jq || typeof (jq) !== "function") {
                 if (/=\?/.test(settings.url)) {
                     return $.jsonP(settings);
                 }
-                
-                if (!settings.crossDomain) settings.crossDomain = /^([\w-]+:)?\/\/([^\/]+)/.test(settings.url) &&
+                if (settings.crossDomain === null) settings.crossDomain = /^([\w-]+:)?\/\/([^\/]+)/.test(settings.url) &&
                     RegExp.$2 != window.location.host;
                 
                 if(!settings.crossDomain)
@@ -1463,7 +1545,14 @@ if (!window.jq || typeof (jq) !== "function") {
                                 } catch (e) {
                                     error = e;
                                 }
-                            } else
+                            } else if (mime === 'application/xml, text/xml') {
+                                result = xhr.responseXML;
+                            } 
+                            else if(mime=="text/html"){
+                                result=xhr.responseText;
+                                $.parseJS(result);
+                            }
+                            else
                                 result = xhr.responseText;
                             //If we're looking at a local file, we assume that no response sent back means there was an error
                             if(xhr.status===0&&result.length===0)
@@ -1660,18 +1749,20 @@ if (!window.jq || typeof (jq) !== "function") {
             $.os.chrome = userAgent.match(/Chrome/) ? true : false;
 			$.os.opera = userAgent.match(/Opera/) ? true : false;
             $.os.fennec = userAgent.match(/fennec/i) ? true :userAgent.match(/Firefox/)?true: false;
-            $.os.ie = userAgent.match(/MSIE 10.0/i)?true:false
-			$.os.supportsTouch = ((window.DocumentTouch && document instanceof window.DocumentTouch) || 'ontouchstart' in window);
-			//features
-			$.feat = {};
+            $.os.ie = userAgent.match(/MSIE 10.0/i)?true:false;
+            $.os.ieTouch=$.os.ie&&userAgent.toLowerCase().match(/touch/i);
+            $.os.supportsTouch = ((window.DocumentTouch && document instanceof window.DocumentTouch) || 'ontouchstart' in window);
+            //features
+            $.feat = {};
             var head=document.documentElement.getElementsByTagName("head")[0];
-			$.feat.nativeTouchScroll =  typeof(head.style["-webkit-overflow-scrolling"])!=="undefined"&&$.os.ios;
+            $.feat.nativeTouchScroll =  typeof(head.style["-webkit-overflow-scrolling"])!=="undefined"||$.os.ieTouch;
             $.feat.cssPrefix=$.os.webkit?"Webkit":$.os.fennec?"Moz":$.os.ie?"ms":$.os.opera?"O":"";
             $.feat.cssTransformStart=!$.os.opera?"3d(":"(";
             $.feat.cssTransformEnd=!$.os.opera?",0)":")";
             if($.os.android&&!$.os.webkit)
                 $.os.android=false;
         }
+
         detectUA($, navigator.userAgent);
         $.__detectUA = detectUA; //needed for unit tests
         if (typeof String.prototype.trim !== 'function') {
@@ -1802,13 +1893,12 @@ if (!window.jq || typeof (jq) !== "function") {
          * @param {String|Object} events
          * @param {Function} function that will be executed when event triggers
          * @param {String|Array|Object} [selector]
-         * @param {Boolean} [getDelegate]
+         * @param {Function} [getDelegate]
          * @api private
          */
         function add(element, events, fn, selector, getDelegate) {
             var id = jqmid(element), 
             set = (handlers[id] || (handlers[id] = []));
-            
             eachEvent(events, fn, function(event, fn) {
                 var delegate = getDelegate && getDelegate(fn, event), 
                 callback = delegate || fn;
@@ -1828,6 +1918,7 @@ if (!window.jq || typeof (jq) !== "function") {
                 set.push(handler);
                 element.addEventListener(handler.e, proxyfn, false);
             });
+            //element=null;
         }
 
         /**
@@ -2266,10 +2357,49 @@ if (!window.jq || typeof (jq) !== "function") {
                 }
             }
         }, true);
+
+        /**
+         * this function executes javascript in HTML.
+           ```
+           $.parseJS(content)
+           ```
+        * @param {String|DOM} content
+        * @title $.parseJS(content);
+        */
+        var remoteJSPages={};
+        $.parseJS= function(div) {
+            if (!div)
+                return;
+            if(typeof(div)=="string"){
+                var elem=document.createElement("div");
+                elem.innerHTML=div;
+                div=elem;
+            }
+            var scripts = div.getElementsByTagName("script");
+            div = null;            
+            for (var i = 0; i < scripts.length; i++) {
+                if (scripts[i].src.length > 0 && !remoteJSPages[scripts[i].src]) {
+                    var doc = document.createElement("script");
+                    doc.type = scripts[i].type;
+                    doc.src = scripts[i].src;
+                    document.getElementsByTagName('head')[0].appendChild(doc);
+                    remoteJSPages[scripts[i].src] = 1;
+                    doc = null;
+                } else {
+                    window.eval(scripts[i].innerHTML);
+                }
+            }
+        };
 		
 
 
-        
+        //custom events since people want to do $().click instead of $().bind("click")
+
+        ["click","keydown","keyup","keypress","submit","load","resize","change","select","error"].forEach(function(event){
+            $.fn[event]=function(cb){
+                return callback?this.bind(event,callback):this.trigger(event);
+            }
+        });
          /**
          * End of APIS
          * @api private

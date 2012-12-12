@@ -277,19 +277,6 @@
             }
         }
         
-        // var tmp = new $.css3AnimateQueue();
-        // tmp.push({id:"animate",x:20,y:30,time:"300ms"});
-        // tmp.push({id:"animate",x:20,y:30,time:"500ms",previous:true});
-        // tmp.push({id:"animate",x:0,y:0,time:"0ms"});
-        // tmp.push({id:"animate",x:20,y:30,time:"300ms"});
-        // tmp.push({id:"animate",x:20,y:30,time:"500ms",previous:true});
-        // tmp.push(function(){reset()});
-        // tmp.run();
-        
-        //uncomment for performance debug
-        //css3Animate = $.debug.type(css3Animate, 'css3Animate');
-        
-        
         return css3Animate;
     })();
 
@@ -689,8 +676,8 @@
 			//set current scroll
 			if(!firstExecution) this.adjustScroll();
 			//set events
-			//if(this.refresh || this.infinite&&!jq.os.desktop) this.el.addEventListener('touchstart', this, false);
-			//this.el.addEventListener('scroll', this, false)
+			if(this.refresh || this.infinite&&!jq.os.desktop) this.el.addEventListener('touchstart', this, false);
+			this.el.addEventListener('scroll', this, false)
 		}
 		nativeScroller.prototype.disable = function(destroy) {
 			if(!this.eventsActive) return;
@@ -711,6 +698,10 @@
 			if(!leaveRefresh) this.refresh = true;
 			if(this.refresh && this.refresh == true) {
 				this.coreAddPullToRefresh(el);
+                this.refreshContainer.style.position="absolute";
+                this.refreshContainer.style.top="-60px";
+                this.refreshContainer.style.height="60px";
+                this.refreshContainer.style.display="block";
 			}
 		}
 		nativeScroller.prototype.onTouchStart = function(e) {
@@ -721,14 +712,8 @@
 
 				this.el.addEventListener('touchmove', this, false);
 				this.dY = e.touches[0].pageY;
-				if(this.refresh && this.dY == 0) {
-					this.refreshContainer.style.display = "block";
-					this.refreshHeight = this.refreshContainer.firstChild.clientHeight;
-					this.scrollTo({
-						y: this.refreshHeight,
-						x: this.scrollLeft
-					});
-					this.refreshContainer.style.height = this.refreshHeight + 'px';
+				if(this.refresh && this.dY <0) {
+					this.showRefresh();
 
 				}
 			}
@@ -746,31 +731,35 @@
 
 
 			//check for trigger
-			if(!this.refreshTriggered && this.refresh && (this.el.scrollTop) < 0) {
-				this.refreshContainer.style.display = "block";
-				this.refreshContainer.style.height = this.refreshHeight + 'px';
-				this.refreshTriggered = true;
-				$.trigger(this, 'refresh-trigger');
-				this.scrollTo({
-					y: this.refreshHeight,
-					x: this.scrollLeft
-				});
+			if(this.refresh && (this.el.scrollTop) < 0) {
+				this.showRefresh();
 				//check for cancel
 			} else if(this.refreshTriggered && this.refresh && (this.el.scrollTop > this.refreshHeight)) {
 				this.refreshTriggered = false;
 				if(this.refreshCancelCB) clearTimeout(this.refreshCancelCB);
-				this.refreshContainer.style.display = "none";
+				this.hideRefresh(false);
 				$.trigger(this, 'refresh-cancel');
 			}
 
 			this.cY = newcY;
-			e.stopPropagation();
+//			e.stopPropagation();
 		}
+        nativeScroller.prototype.showRefresh=function(){
+            if(!this.refreshTriggered){
+                this.refreshTriggered = true;
+                $.trigger(this, 'refresh-trigger');
+            }
+        }
 		nativeScroller.prototype.onTouchEnd = function(e) {
 
 			var triggered = this.el.scrollTop <= 0;
 
 			this.fireRefreshRelease(triggered, true);
+            if(triggered){
+                //lock in place
+                this.refreshContainer.style.position="relative";
+                this.refreshContainer.style.top="0px";
+            }
 
 			this.dY = this.cY = 0;
 			this.el.removeEventListener('touchmove', this, false);
@@ -796,8 +785,8 @@
 						that.el.scrollTop=0;
 						that.logPos(that.el.scrollLeft, 0);
 					}
-					that.refreshContainer.style.height = '0';
-					that.refreshContainer.style.display = "none";
+					that.refreshContainer.style.top = "-60px";
+					that.refreshContainer.style.position="absolute";
 					that.dY = that.cY = 0;
 				};
 
@@ -1471,13 +1460,13 @@
 			if(this.vscrollBar){
 				this.vscrollBar.style[$.feat.cssPrefix+"Transform"] = "none";
 				this.vscrollBar.style[$.feat.cssPrefix+"Transition"] = "none";
-				this.vscrollBar.style[$.feat.cssPrefix+"Terspective"] = "none";
+				this.vscrollBar.style[$.feat.cssPrefix+"Perspective"] = "none";
 				this.vscrollBar.style[$.feat.cssPrefix+"BackfaceVisibility"] = "visible";
 			}
 			if(this.hscrollBar){
 				this.hscrollBar.style[$.feat.cssPrefix+"Transform"] = "none";
 				this.hscrollBar.style[$.feat.cssPrefix+"Transition"] = "none";
-				this.hscrollBar.style[$.feat.cssPrefix+"{erspective"] = "none";
+				this.hscrollBar.style[$.feat.cssPrefix+"Perspective"] = "none";
 				this.hscrollBar.style[$.feat.cssPrefix+"BackfaceVisibility"] = "visible";
 			}
 
@@ -1593,10 +1582,6 @@
 		jsScroller.prototype.scrollToTop=function(time){
 			this.scrollTo({x:0,y:0},time);
 		}
-
-		//debug JS scrolling
-		//jsScroller = $.debug.type(jsScroller, 'jsScroller');
-		//return main function
 		return scroller;
 	})();
 })(jq);
@@ -1864,7 +1849,7 @@
                 actionsheetEl = $(elID).append(markup);
                 
                 markup.get().style[$.feat.cssPrefix+'Transition']="all 0ms";
-                markup.css($.feat.cssPrefix+"Transform", $.feat.cssTransformStart+"0,0"+$.feat.cssTransformEnd);
+                markup.css($.feat.cssPrefix+"Transform",  "translate"+$.feat.cssTransformStart+"0,0"+$.feat.cssTransformEnd);
                 markup.css("top",window.innerHeight+"px");
                 this.el.style.overflow = "hidden";
                 markup.on("click", "a",function(){that.hideSheet()});
@@ -1872,7 +1857,7 @@
                 $(elID).append('<div id="jq_action_mask" style="position:absolute;top:0px;left:0px;right:0px;bottom:0px;z-index:9998;background:rgba(0,0,0,.4)"/>');
                 setTimeout(function(){
                     markup.get().style[$.feat.cssPrefix+'Transition']="all 300ms";
-                    markup.css($.feat.cssPrefix+"Transform", $.feat.cssTransformStart+"0,"+(-(markup.height()))+"px"+$.feat.cssTransformEnd);
+                    markup.css($.feat.cssPrefix+"Transform", "translate"+ $.feat.cssTransformStart+"0,"+(-(markup.height()))+"px"+$.feat.cssTransformEnd);
                  },10);
             } catch (e) {
                 alert("error adding actionsheet" + e);
@@ -1890,7 +1875,8 @@
                 setTimeout(function(){
                     
                 	markup.get().style[$.feat.cssPrefix+'Transition']="all 300ms";
-                	markup.css($.feat.cssPrefix+"Transform", $.feat.cssTransformStart+"0,0px"+$.feat.cssTransformEnd);
+
+                	markup.css($.feat.cssPrefix+"Transform", "translate"+$.feat.cssTransformStart+"0,0px"+$.feat.cssTransformEnd);
                 	setTimeout(function(){
 		                markup.remove();
 		                markup=null;
@@ -2319,8 +2305,11 @@ if (!HTMLElement.prototype.unwatch) {
         }
     }
     $(document).ready(function() {
+        var prevEl;
         $(document.body).bind('touchstart', function(e) {
+            if(!e.touches||e.touches.length==0) return;
             var now = Date.now(), delta = now - (touch.last || now);
+            if(!e.touches||e.touches.length==0) return;
             touch.el = $(parentIfText(e.touches[0].target));
             touchTimeout && clearTimeout(touchTimeout);
             touch.x1 = touch.x2= e.touches[0].pageX;
@@ -2331,10 +2320,14 @@ if (!HTMLElement.prototype.unwatch) {
             setTimeout(longTap, longTapDelay);
             if (!touch.el.data("ignore-pressed"))
                 touch.el.addClass("selected");
+            if(prevEl&&!prevEl.data("ignore-pressed"))
+                prevEl.removeClass("selected");
+            prevEl=touch.el;
         }).bind('touchmove', function(e) {
             touch.x2 = e.touches[0].pageX;
             touch.y2 = e.touches[0].pageY;
         }).bind('touchend', function(e) {
+
             if (!touch.el)
                 return;
             if (!touch.el.data("ignore-pressed"))
@@ -2349,6 +2342,7 @@ if (!HTMLElement.prototype.unwatch) {
                 touch.x1 = touch.x2 = touch.y1 = touch.y2 = touch.last = 0;
             } else if ('last' in touch) {
                 touch.el.trigger('tap');
+
                 
                 touchTimeout = setTimeout(function() {
                     touchTimeout = null;
@@ -2358,7 +2352,10 @@ if (!HTMLElement.prototype.unwatch) {
                 }, 250);
             }
         }).bind('touchcancel', function() {
-            touch = {}
+            if(touch.el&& !touch.el.data("ignore-pressed"))
+                touch.el.removeClass("selected");
+            touch = {};
+
         });
     });
     
@@ -2399,7 +2396,7 @@ if (!HTMLElement.prototype.unwatch) {
 	};
 	//configuration stuff
 	var inputElements = ['input', 'select', 'textarea'];
-	var autoBlurInputTypes = ['button', 'radio', 'checkbox', 'range'];
+	var autoBlurInputTypes = ['button', 'radio', 'checkbox', 'range','date'];
 	var requiresJSFocus = $.os.ios; //devices which require .focus() on dynamic click events
 	var verySensitiveTouch = $.os.blackberry; //devices which have a very sensitive touch and touchmove is easily fired even on simple taps
 	var inputElementRequiresNativeTap = $.os.blackberry || ($.os.android && !$.os.chrome); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
@@ -2607,7 +2604,6 @@ if (!HTMLElement.prototype.unwatch) {
 
 			//this.log("click on "+tag);
 			if(inputElements.indexOf(tag) !== -1 && (!this.isFocused_ || !e.target==(this.focusedElement))) {
-
 				var type = e.target && e.target.type != undefined ? e.target.type.toLowerCase() : '';
 				var autoBlur = autoBlurInputTypes.indexOf(type) !== -1;
 
@@ -3078,7 +3074,6 @@ if (!HTMLElement.prototype.unwatch) {
         transitionType: "slide",
         scrollingDivs: [],
         firstDiv: "",
-        remoteJSPages: {},
         hasLaunched: false,
         launchCompleted: false,
         activeDiv: "",
@@ -3715,8 +3710,9 @@ if (!HTMLElement.prototype.unwatch) {
                     
                     button = null;
                     content = null;
-                    this.scrollingDivs['modal_container'].enable();
+                    this.scrollingDivs['modal_container'].enable(!that.resetScrollers);
                     this.scrollToTop('modal');
+                     jq("#modalContainer").data("panel",id);
                 }
             } catch (e) {
                 console.log("Error with modal - " + e, this.modalWindow);
@@ -3734,6 +3730,14 @@ if (!HTMLElement.prototype.unwatch) {
             jq("#jQui_modal").hide()
             
             this.scrollingDivs['modal_container'].disable();
+
+            var tmp=$($("#modalContainer").data("panel"));
+            var fnc = tmp.data("unload");
+            if (typeof fnc == "string" && window[fnc]) {
+                window[fnc](what);
+            }
+            tmp.trigger("unloadpanel");
+
         },
 
         /**
@@ -3792,7 +3796,7 @@ if (!HTMLElement.prototype.unwatch) {
                 var newId = (newDiv.id) ? newDiv.id : el.replace("#",""); //figure out the new id - either the id from the loaded div.panel or the crc32 hash
                 newDiv.id = newId;
                 if (newDiv.id != el)
-                    newDiv.setAttribute("data-crc", el);
+                    newDiv.setAttribute("data-crc", el.replace("#",""));
             } else {
                 newDiv = myEl;
             }
@@ -3992,8 +3996,8 @@ if (!HTMLElement.prototype.unwatch) {
                 if (typeof fnc == "string" && window[fnc]) {
                     window[fnc](oldDiv);
                 }
+                $(oldDiv).trigger("unloadpanel");
             }
-            $(what).trigger("unloadpanel");
             var fnc = what.getAttribute("data-load");
             if (typeof fnc == "string" && window[fnc]) {
                 window[fnc](what);
@@ -4010,21 +4014,7 @@ if (!HTMLElement.prototype.unwatch) {
         parseScriptTags: function(div) {
             if (!div)
                 return;
-            var scripts = div.getElementsByTagName("script");
-            div = null;
-            var that = this;
-            for (var i = 0; i < scripts.length; i++) {
-                if (scripts[i].src.length > 0 && !that.remoteJSPages[scripts[i].src]) {
-                    var doc = document.createElement("script");
-                    doc.type = scripts[i].type;
-                    doc.src = scripts[i].src;
-                    document.getElementsByTagName('head')[0].appendChild(doc);
-                    that.remoteJSPages[scripts[i].src] = 1;
-                    doc = null;
-                } else {
-                    window.eval(scripts[i].innerHTML);
-                }
-            }
+            $.parseJS(div);
         },
         /**
          * This is called to initiate a transition or load content via ajax.
@@ -4051,9 +4041,8 @@ if (!HTMLElement.prototype.unwatch) {
             
             what = null;
             var that = this;
-            that.hideMask();
             var loadAjax = true;
-            
+            anchor = anchor || document.createElement("a"); //Hack to allow passing in no anchor
             if (target.indexOf("#") == -1) {
                 var urlHash = "url" + crc32(target); //Ajax urls
                 var crcCheck = jq("div.panel[data-crc='" + urlHash + "']");
@@ -4061,8 +4050,13 @@ if (!HTMLElement.prototype.unwatch) {
                     loadAjax = false;
                 } 
                 else if (crcCheck.length > 0) {
-                    if (crcCheck.length > 0)
-                        target = "#" + crcCheck.get(0).id
+                    loadAjax = false;
+                    if (anchor.getAttribute("data-refresh-ajax") === 'true' || (anchor.refresh && anchor.refresh === true || this.isAjaxApp)) {
+                        loadAjax = true;
+                    }
+                    else {
+                        target = "#" + crcCheck.get(0).id;
+                    }
                 } else if (jq("#" + urlHash).length > 0) {
 
                     //ajax div already exists.  Let's see if we should be refreshing it.
@@ -4074,7 +4068,6 @@ if (!HTMLElement.prototype.unwatch) {
                 }
             }
             if (target.indexOf("#") == -1 && loadAjax) {
-                anchor = anchor || document.createElement("a"); //Hack to allow passing in no anchor
                 this.loadAjax(target, newTab, back, transition, anchor);
             } else {
                 this.loadDiv(target, newTab, back, transition);
@@ -4108,27 +4101,30 @@ if (!HTMLElement.prototype.unwatch) {
             what = jq("#" + what).get(0);
             
             if (!what)
-                throw ("Target: " + target + " was not found");
+                return console.log ("Target: " + target + " was not found");
             if (what == this.activeDiv && !back) {
                 //toggle the menu if applicable
                 if (this.isSideMenuOn())
                     this.toggleSideMenu(false);
                 return;
             }
+            this.transitionType = transition;
+            var oldDiv = this.activeDiv;
+            var currWhat = what;
             
             if (what.getAttribute("data-modal") == "true" || what.getAttribute("modal") == "true") {
+                this.parsePanelFunctions(what, oldDiv);
                 return this.showModal(what.id);
             }
                         
             
-            this.transitionType = transition;
-            var oldDiv = this.activeDiv;
-            var currWhat = what;
+          
             
             if (oldDiv == currWhat) //prevent it from going to itself
                 return;
             
             if (newTab) {
+                this.clearHistory();
                 this.pushHistory("#" + this.firstDiv.id, what.id, transition, hashLink);
             } else if (!back) {
                 this.pushHistory(previousTarget, what.id, transition, hashLink);
@@ -4206,7 +4202,7 @@ if (!HTMLElement.prototype.unwatch) {
                 this.setBackButtonVisibility(true);
             this.activeDiv = what;
             if (this.scrollingDivs[this.activeDiv.id]) {
-                this.scrollingDivs[this.activeDiv.id].enable();
+                this.scrollingDivs[this.activeDiv.id].enable(!this.resetScrollers);
             }
         },
         /**
@@ -4239,7 +4235,7 @@ if (!HTMLElement.prototype.unwatch) {
                     var doReturn = false;
 
                     //Here we check to see if we are retaining the div, if so update it
-                    if (jq("#" + urlHash.length > 0)) {
+                    if (jq("#" + urlHash).length > 0) {
                         that.updateContentDiv(urlHash, xmlhttp.responseText);
                         jq("#" + urlHash).get(0).title = anchor.title ? anchor.title : target;
                     } else if (anchor.getAttribute("data-persist-ajax") || that.isAjaxApp) {
@@ -4264,11 +4260,18 @@ if (!HTMLElement.prototype.unwatch) {
                     var div = document.createElement("div");
                     div.innerHTML = xmlhttp.responseText;
                     that.parseScriptTags(div);
+
                     if (doReturn)
+                    {
+                         if (that.showLoading)
+                            that.hideMask();
                         return;
+                    }
                     
-                    return that.loadContent("#" + urlHash);
-                
+                    that.loadContent("#" + urlHash);
+                    if (that.showLoading)
+                       that.hideMask();
+                    return null;
                 }
             };
             ajaxUrl = target;
@@ -4449,16 +4452,16 @@ if (!HTMLElement.prototype.unwatch) {
                 if (el.parentNode && el.parentNode.id != "content") {
                     el.parentNode.removeChild(el);
                     var id = el.id;
-                    this.addDivAndScroll(tmp);
                     if (tmp.getAttribute("selected"))
                         this.firstDiv = jq("#" + id).get(0);
+                    this.addDivAndScroll(tmp);
                 } else if (!el.parsedContent) {
                     el.parsedContent = 1;
                     el.parentNode.removeChild(el);
                     var id = el.id;
-                    this.addDivAndScroll(tmp);
                     if (tmp.getAttribute("selected"))
                         this.firstDiv = jq("#" + id).get(0);
+                    this.addDivAndScroll(tmp);
                 }
                 if (el.getAttribute("data-defer")) {
                     defer[id] = el.getAttribute("data-defer");
@@ -4542,7 +4545,7 @@ if (!HTMLElement.prototype.unwatch) {
                     //go to activeDiv
                     var firstPanelId = that.getPanelId(defaultHash);
                     //that.history=[{target:'#'+that.firstDiv.id}];   //set the first id as origin of path
-                    if (firstPanelId.length > 0 && that.loadDefaultHash && firstPanelId != ("#" + that.firstDiv.id)) {
+                    if (firstPanelId.length > 0 && that.loadDefaultHash && firstPanelId != ("#" + that.firstDiv.id)&&$(firstPanelId).length>0) {
                         that.loadContent(defaultHash, true, false, 'none'); //load the active page as a newTab with no transition
                     } else {
                         previousTarget = "#" + that.firstDiv.id;
@@ -4658,9 +4661,9 @@ if (!HTMLElement.prototype.unwatch) {
             
             var custom = (typeof jq.ui.customClickHandler == "function") ? jq.ui.customClickHandler : false;
             if (custom !== false) {
-                e.preventDefault();
-                jq.ui.customClickHandler(theTarget);
-                return;
+                if(jq.ui.customClickHandler(theTarget))
+                   return e.preventDefault();
+                
             }
             if (theTarget.href.toLowerCase().indexOf("javascript:") !== -1 || theTarget.getAttribute("data-ignore")) {
                 return;
@@ -4692,7 +4695,7 @@ if (!HTMLElement.prototype.unwatch) {
                 href = href.substring(prefix.length+1);
             }
             //empty links
-            if (href == "#" || (href.length == 0 && theTarget.hash.length == 0))
+            if (href == "#" ||(href.indexOf("#")===href.length-1)|| (href.length == 0 && theTarget.hash.length == 0))
                 return;
 
             //internal links
@@ -4741,7 +4744,6 @@ if (!HTMLElement.prototype.unwatch) {
     });
 
 })();
-
 (function($ui){
     
         function fadeTransition (oldDiv, currDiv, back) {

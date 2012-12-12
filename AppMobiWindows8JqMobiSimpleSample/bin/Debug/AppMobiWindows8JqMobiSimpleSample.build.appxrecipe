@@ -38,20 +38,23 @@
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\icons.css">
       <PackagePath>html\css\icons.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\icons_new.css">
-      <PackagePath>html\css\icons_new.css</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.8tiles.css">
+      <PackagePath>html\css\jq.8tiles.css</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui.css">
       <PackagePath>html\css\jq.ui.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui_new.css">
-      <PackagePath>html\css\jq.ui_new.css</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\css\jq.ui.less.css">
+      <PackagePath>html\css\jq.ui.less.css</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\index.html">
       <PackagePath>html\index.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.desktopBrowsers.js">
-      <PackagePath>html\_appMobi\jq.desktopBrowsers.js</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.8tiles.js">
+      <PackagePath>html\_appMobi\jq.8tiles.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.min.js">
+      <PackagePath>html\_appMobi\jq.mobi.min.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.ui.js">
       <PackagePath>html\_appMobi\jq.ui.js</PackagePath>
@@ -65,20 +68,11 @@
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.js">
       <PackagePath>html\_appMobi\jq.mobi.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.mobi.min.js">
-      <PackagePath>html\_appMobi\jq.mobi.min.js</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\window.js">
+      <PackagePath>html\_appMobi\window.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\jq.ui.min.js">
-      <PackagePath>html\_appMobi\jq.ui.min.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.mobi.js">
-      <PackagePath>html\_appMobi\_jq.mobi.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.mobi.min.js">
-      <PackagePath>html\_appMobi\_jq.mobi.min.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\html\_appMobi\_jq.ui.js">
-      <PackagePath>html\_appMobi\_jq.ui.js</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\readme.txt">
+      <PackagePath>readme.txt</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Ryan\SkyDrive\Development\window8\AppMobiWindows8JqMobiSimpleSample\AppMobiWindows8JqMobiSimpleSample\bin\Debug\App.xaml">
       <PackagePath>App.xaml</PackagePath>

@@ -1,11 +1,12 @@
 <html>
     <head>
-        <script type="text/javascript" charset="utf-8" src="_appMobi/jq.mobi.js"></script>
-        <script type="text/javascript" src="_appMobi/jq.desktopBrowsers.js"></script>
-        <script type="text/javascript" src="_appMobi/jq.ui.js"></script>
-        
         <link href="css/icons.css" rel="stylesheet" type="text/css">
-        <link href="css/jq.ui.css" rel="stylesheet" type="text/css">
+        <link href="css/jq.8tiles.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" charset="utf-8" src="_appMobi/appmobi_local_bootstrap.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="_appMobi/jq.mobi.js"></script>
+        <script type="text/javascript" src="_appMobi/window.js"></script>
+        
         <title></title>
         <style type="text/css">
             a.c5 {color:white}
@@ -15,7 +16,19 @@
             div.c1 {display: block;}
         </style>
 
-
+        <script>
+            // For debugging purposes (This will save your life)
+            window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+                window.external.notify("logger: --------------------");
+                window.external.notify("logger: onerror: errorMsg: " + errorMsg);
+                window.external.notify("logger: onerror: url: " + url);
+                window.external.notify("logger: onerror: lineNumber: " + lineNumber);
+                window.external.notify("logger: --------------------");
+            }
+        </script>
+ 
+        <script type="text/javascript" charset="utf-8" src="_appmobi/jq.8tiles.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="_appmobi/jq.ui.js"></script> 
     </head>
     <body>
         <div id="jQUi">
