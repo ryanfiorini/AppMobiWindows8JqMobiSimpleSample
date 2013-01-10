@@ -117,16 +117,20 @@
     </AppxManifest>
     <None Include="AppMobiWindows8JqMobiSimpleSample_TemporaryKey.pfx" />
     <None Include="html\css\jq.ui.less" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\splash_landscape.png" />
+    <Content Include="Assets\splash_portrait.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="html\css\icons.css" />
     <Content Include="html\css\jq.8tiles.css" />
     <Content Include="html\css\jq.ui.css" />
     <Content Include="html\css\jq.ui.less.css" />
+    <Content Include="html\images\background.jpg" />
     <Content Include="html\index.html" />
     <Content Include="html\_appMobi\jq.8tiles.js" />
     <Content Include="html\_appMobi\jq.mobi.min.js" />
@@ -135,6 +139,7 @@
     <Content Include="html\_appMobi\appmobi_local_bootstrap.js" />
     <Content Include="html\_appMobi\jq.mobi.js" />
     <Content Include="html\_appMobi\window.js" />
+    <Content Include="html\_appMobi\xhr.js" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
